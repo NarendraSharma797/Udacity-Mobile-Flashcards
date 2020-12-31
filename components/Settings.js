@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, StyleSheet } from 'react-native';
 import { gray, white, red, textGray, green } from '../utils/colors';
+import { settingWarningContent} from '../utils/constant'
 import TouchButton from './TouchButton';
 import { resetDecks } from '../utils/api.js';
 import { connect } from 'react-redux';
 import { resetStore } from '../common/index';
+import * as Icon from '@expo/vector-icons';
 
 export class Settings extends Component {
   static propTypes = {
@@ -26,13 +28,14 @@ export class Settings extends Component {
         <View style={styles.block}>
           <View style={styles.blockContainer}>
             <Text style={styles.blockText}>
-              This will reset the app data back to the original data set.
+              {settingWarningContent}
             </Text>
             <View style={{ height: 20 }} />
             <TouchButton
               btnStyle={{ backgroundColor: red, borderColor: white }}
               onPress={this.handleResetData}
             >
+              <Icon.FontAwesome name="warning" size={20} color={white} />
               Reset App Data
             </TouchButton>
           </View>

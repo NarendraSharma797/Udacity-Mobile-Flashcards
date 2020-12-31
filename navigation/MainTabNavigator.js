@@ -43,7 +43,7 @@ const routeConfigs = {
     navigationOptions: {
       tabBarLabel: 'Settings',
       tabBarIcon: ({ tintColor }) => (
-        <Icon.FontAwesome name="sliders" size={25} color={tintColor} />
+        <Icon.FontAwesome name="cogs" size={25} color={tintColor} />
       )
     }
   }

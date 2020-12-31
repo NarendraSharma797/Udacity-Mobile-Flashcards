@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Text, View, StyleSheet, TextInput } from 'react-native';
 import TouchButton from './TouchButton';
 import { gray, green, white, textGray } from '../utils/colors';
+import { addNewDeckTitle} from '../utils/constant'
 import { connect } from 'react-redux';
 import { addDeck } from '../common/index';
 import { saveDeckTitleAS } from '../utils/api';
@@ -45,7 +46,7 @@ export class AddDeck extends Component {
       <View style={styles.container}>
         <View style={{ height: 60 }} />
         <View style={styles.block}>
-          <Text style={styles.title}>What is the title of your new deck?</Text>
+          <Text style={styles.title}>{addNewDeckTitle}</Text>
         </View>
         <View style={[styles.block]}>
           <TextInput

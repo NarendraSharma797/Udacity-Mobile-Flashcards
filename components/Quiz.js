@@ -22,10 +22,8 @@ export class Quiz extends Component {
     const { navigation } = this.props;
     const title = navigation.getParam('title', '');
 
-    if (Constants.platform.android) {
-      return <Quiz_Android title={title} />;
-    }
-    return <Quiz_iOS title={title} />;
+
+    return Constants.platform.android ? <Quiz_Android title={title} /> : <Quiz_iOS title={title} />
   }
 }
 

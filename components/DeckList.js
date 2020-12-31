@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import Deck from './Deck';
-import { gray, green } from '../utils/colors';
+import { gray, green, lightBlue } from '../utils/colors';
+import { appTitle} from '../utils/constant'
 import { handleInitialData } from '../common/index';
 
 export class DeckList extends Component {
@@ -26,16 +27,16 @@ export class DeckList extends Component {
 
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.title}>My Flashcard</Text>
-        {Object.values(decks).map(deck => {
+        <Text style={styles.title}>{appTitle}</Text>
+        {Object.values(decks).map(deckItem => {
           return (
             <TouchableOpacity
-              key={deck.title}
+              key={deckItem.title}
               onPress={() =>
-                navigation.navigate('DeckDetail', { title: deck.title })
+                navigation.navigate('DeckDetail', { title: deckItem.title })
               }
             >
-              <Deck id={deck.title} />
+              <Deck id={deckItem.title} />
             </TouchableOpacity>
           );
         })}
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     textAlign: 'center',
     marginBottom: 16,
-    color: green
+    color: lightBlue
   }
 });
 

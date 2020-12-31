@@ -23,7 +23,7 @@ export class AddNewCard extends Component {
   handleAddAnswer = answer => {
     this.setState({ answer });
   };
-  handleAdd = () => {
+  handleAddNewCards = () => {
     const { addCardToDeck, title, navigation } = this.props;
     const card = {
       question: this.state.question,
@@ -65,12 +65,12 @@ export class AddNewCard extends Component {
                 this.answerTextInput = input;
               }}
               returnKeyType="done"
-              onSubmitEditing={this.handleAdd}
+              onSubmitEditing={this.handleAddNewCards}
             />
           </View>
           <TouchButton
             btnStyle={{ backgroundColor: green, borderColor: '#fff' }}
-            onPress={this.handleAdd}
+            onPress={this.handleAddNewCards}
             disabled={this.state.question === '' || this.state.answer === ''}
           >
             Add

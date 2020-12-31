@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { removeDeckById } from '../common/index';
 import { removeDeckFromAsyncStorage } from '../utils/api';
 import { NavigationActions } from 'react-navigation';
+import * as Icon from '@expo/vector-icons';
 
 export class DeckDetail extends Component {
   static propTypes = {
@@ -19,12 +20,11 @@ export class DeckDetail extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.deck !== undefined;
   }
-  handleDeleteDeck = id => {
+  DeleteDeckById = id => {
     const { removeDeckById, navigation } = this.props;
-
     removeDeckById(id);
     removeDeckFromAsyncStorage(id);
-
+    //go to previous screen
     navigation.goBack();
   };
   render() {
@@ -41,7 +41,8 @@ export class DeckDetail extends Component {
               this.props.navigation.navigate('AddCard', { title: deck.title })
             }
           >
-            Add Card
+            <Icon.FontAwesome name="plus-square" size={20} color={green} />
+             Add Card
           </TouchButton>
           <TouchButton
             btnStyle={{ backgroundColor: green, borderColor: white }}
@@ -50,14 +51,16 @@ export class DeckDetail extends Component {
               this.props.navigation.navigate('Quiz', { title: deck.title })
             }
           >
+            <Icon.FontAwesome name="hourglass-start" size={20} color={white} />
             Start Quiz
           </TouchButton>
         </View>
         <TouchButton
         btnStyle={{ backgroundColor: white, borderColor: white }}
           txtStyle={{ color: red }}
-          onPress={() => this.handleDeleteDeck(deck.title)}
+          onPress={() => this.DeleteDeckById(deck.title)}
         >
+          <Icon.FontAwesome name="trash-o" size={30} color={red} />
           Delete Deck
         </TouchButton>
       </View>

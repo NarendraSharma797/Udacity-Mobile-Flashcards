@@ -22,6 +22,16 @@ export const decks = {
       }
     ]
   },
+  NodeJS: {
+    title: 'NodeJS',
+    questions: [
+      {
+        question: 'What do you mean by the term I/O ?',
+        answer:
+          'I/O is the shorthand for input and output, and it will access anything outside of your application. It will be loaded into the machine memory to run the program, once the application is started. '
+      }
+    ]
+  },
   Redux: {
     title: 'Redux',
     questions: [
