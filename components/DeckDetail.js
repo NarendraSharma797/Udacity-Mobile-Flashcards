@@ -6,24 +6,24 @@ import TouchButton from './TouchButton';
 import TextButton from './TextButton';
 import { gray, textGray, green, white, red } from '../utils/colors';
 import { connect } from 'react-redux';
-import { removeDeck } from '../actions/index';
-import { removeDeckAS } from '../utils/api';
+import { removeDeckById } from '../common/index';
+import { removeDeckFromAsyncStorage } from '../utils/api';
 import { NavigationActions } from 'react-navigation';
 
 export class DeckDetail extends Component {
   static propTypes = {
     navigation: PropTypes.object.isRequired,
-    removeDeck: PropTypes.func.isRequired,
+    removeDeckById: PropTypes.func.isRequired,
     deck: PropTypes.object
   };
   shouldComponentUpdate(nextProps) {
     return nextProps.deck !== undefined;
   }
-  handleDelete = id => {
-    const { removeDeck, navigation } = this.props;
+  handleDeleteDeck = id => {
+    const { removeDeckById, navigation } = this.props;
 
-    removeDeck(id);
-    removeDeckAS(id);
+    removeDeckById(id);
+    removeDeckFromAsyncStorage(id);
 
     navigation.goBack();
   };
@@ -53,12 +53,13 @@ export class DeckDetail extends Component {
             Start Quiz
           </TouchButton>
         </View>
-        <TextButton
+        <TouchButton
+        btnStyle={{ backgroundColor: white, borderColor: white }}
           txtStyle={{ color: red }}
-          onPress={() => this.handleDelete(deck.title)}
+          onPress={() => this.handleDeleteDeck(deck.title)}
         >
           Delete Deck
-        </TextButton>
+        </TouchButton>
       </View>
     );
   }
@@ -87,5 +88,5 @@ const mapStateToProps = (state, { navigation }) => {
 
 export default connect(
   mapStateToProps,
-  { removeDeck }
+  { removeDeckById }
 )(DeckDetail);

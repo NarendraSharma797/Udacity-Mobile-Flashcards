@@ -4,10 +4,10 @@ import { Text, View, TextInput, StyleSheet } from 'react-native';
 import TouchButton from './TouchButton';
 import { gray, green } from '../utils/colors';
 import { connect } from 'react-redux';
-import { addCardToDeck } from '../actions/index';
+import { addCardToDeck } from '../common/index';
 import { addCardToDeckAS } from '../utils/api';
 
-export class AddCard extends Component {
+export class AddNewCard extends Component {
   static propTypes = {
     navigation: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,
@@ -17,13 +17,13 @@ export class AddCard extends Component {
     question: '',
     answer: ''
   };
-  handleQuestionChange = question => {
+  handleAddQuestion = question => {
     this.setState({ question });
   };
-  handleAnswerChange = answer => {
+  handleAddAnswer = answer => {
     this.setState({ answer });
   };
-  handleSubmit = () => {
+  handleAdd = () => {
     const { addCardToDeck, title, navigation } = this.props;
     const card = {
       question: this.state.question,
@@ -41,13 +41,13 @@ export class AddCard extends Component {
       <View style={styles.container}>
         <View>
           <View style={styles.block}>
-            <Text style={styles.title}>Add a question</Text>
+            <Text style={styles.title}>Add a question to this Deck</Text>
           </View>
           <View style={[styles.block]}>
             <TextInput
               style={styles.input}
               value={this.state.question}
-              onChangeText={this.handleQuestionChange}
+              onChangeText={this.handleAddQuestion}
               placeholder="Question"
               autoFocus={true}
               returnKeyType="next"
@@ -59,21 +59,21 @@ export class AddCard extends Component {
             <TextInput
               style={styles.input}
               value={this.state.answer}
-              onChangeText={this.handleAnswerChange}
+              onChangeText={this.handleAddAnswer}
               placeholder="Answer"
               ref={input => {
                 this.answerTextInput = input;
               }}
               returnKeyType="done"
-              onSubmitEditing={this.handleSubmit}
+              onSubmitEditing={this.handleAdd}
             />
           </View>
           <TouchButton
             btnStyle={{ backgroundColor: green, borderColor: '#fff' }}
-            onPress={this.handleSubmit}
+            onPress={this.handleAdd}
             disabled={this.state.question === '' || this.state.answer === ''}
           >
-            Submit
+            Add
           </TouchButton>
         </View>
         <View style={{ height: '30%' }} />
@@ -122,4 +122,4 @@ const mapStateToProps = (state, { navigation }) => {
 export default connect(
   mapStateToProps,
   { addCardToDeck }
-)(AddCard);
+)(AddNewCard);

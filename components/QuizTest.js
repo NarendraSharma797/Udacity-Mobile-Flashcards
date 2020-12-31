@@ -56,9 +56,6 @@ export class QuizTest extends Component {
     console.log('this.state.answered', this.state.answered);
 
     const { correct, incorrect } = this.state;
-    // console.log('correct:', correct);
-    // console.log('incorrect:', incorrect);
-
     const questions = Object.values(decks)[2].questions;
     const numQuestions = questions.length - 1;
 
@@ -66,12 +63,12 @@ export class QuizTest extends Component {
       this.setState({ show: screen.RESULT });
     }
   };
-  handleReset = () => {
+  handleRestart = () => {
     this.setState(prevState => ({
       show: screen.QUESTION,
       correct: 0,
       incorrect: 0,
-      // answered: Array(Object.values(this.props.decks)[2].questions.length).fill(
+     
       answered: Array(prevState.questions).fill(0)
     }));
   };
@@ -80,15 +77,11 @@ export class QuizTest extends Component {
     const { show } = this.state;
     const questions = Object.values(decks)[2].questions;
 
-    // console.log('decks', decks);
-    // console.log('questions', questions);
-    // console.log('questions.length', questions.length);
-
     if (this.state.show === screen.RESULT) {
       const { correct, incorrect } = this.state;
       const total = correct + incorrect;
       const percent = ((correct / total) * 100).toFixed(0);
-      const resultStyle =
+      const finalStyle =
         percent >= 70 ? styles.resultTextGood : styles.resultTextBad;
 
       return (
@@ -98,9 +91,9 @@ export class QuizTest extends Component {
           </View>
           <View style={styles.block}>
             <Text style={[styles.count, { textAlign: 'center' }]}>
-              Quiz Complete!
+              Quiz Completed!
             </Text>
-            <Text style={resultStyle}>
+            <Text style={finalStyle}>
               {correct} / {total} correct
             </Text>
           </View>
@@ -108,19 +101,18 @@ export class QuizTest extends Component {
             <Text style={[styles.count, { textAlign: 'center' }]}>
               Percentage correct
             </Text>
-            <Text style={resultStyle}>{percent}%</Text>
+            <Text style={finalStyle}>{percent}%</Text>
           </View>
           <View>
             <TouchButton
               btnStyle={{ backgroundColor: green, borderColor: white }}
-              onPress={this.handleReset}
+              onPress={this.handleRestart}
             >
               Restart Quiz
             </TouchButton>
             <TouchButton
               btnStyle={{ backgroundColor: gray, borderColor: textGray }}
               txtStyle={{ color: textGray }}
-              // onPress={() => this.props.navigation.goBack()}
               onPress={() => console.log('go back')}
             >
               Back to Deck
@@ -131,19 +123,9 @@ export class QuizTest extends Component {
     }
 
     return (
-      // <ScrollView style={styles.container} pagingEnabled={true}>
-      //   {Object.values(decks).map(deck => {
-      //     return (
-      //       <View style={styles.screen} key={deck.title}>
-      //         <Text style={styles.largeText}>{JSON.stringify(deck)}</Text>
-      //       </View>
-      //     );
-      //   })}
-      // </ScrollView>
       <ViewPagerAndroid
         style={styles.container}
         scrollEnabled={true}
-        // onPageSelected={pos => this.handlePageChange(pos)}
         onPageSelected={this.handlePageChange}
       >
         {questions.map((question, idx) => (
@@ -222,7 +204,7 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   count: {
-    fontSize: 24
+    fontSize: 18
   },
   title: {
     fontSize: 32,
@@ -250,12 +232,12 @@ const styles = StyleSheet.create({
   },
   resultTextGood: {
     color: green,
-    fontSize: 46,
+    fontSize:25,
     textAlign: 'center'
   },
   resultTextBad: {
     color: red,
-    fontSize: 46,
+    fontSize: 25,
     textAlign: 'center'
   }
 });

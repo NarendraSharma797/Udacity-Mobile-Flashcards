@@ -5,14 +5,14 @@ import { gray, white, red, textGray, green } from '../utils/colors';
 import TouchButton from './TouchButton';
 import { resetDecks } from '../utils/api.js';
 import { connect } from 'react-redux';
-import { resetStore } from '../actions/index';
+import { resetStore } from '../common/index';
 
 export class Settings extends Component {
   static propTypes = {
     navigation: PropTypes.object.isRequired,
     resetStore: PropTypes.func.isRequired
   };
-  handleResetDecks = () => {
+  handleResetData = () => {
     const { resetStore, navigation } = this.props;
 
     resetStore();
@@ -26,14 +26,14 @@ export class Settings extends Component {
         <View style={styles.block}>
           <View style={styles.blockContainer}>
             <Text style={styles.blockText}>
-              This will reset the data back to the original data set.
+              This will reset the app data back to the original data set.
             </Text>
             <View style={{ height: 20 }} />
             <TouchButton
               btnStyle={{ backgroundColor: red, borderColor: white }}
-              onPress={this.handleResetDecks}
+              onPress={this.handleResetData}
             >
-              Reset Data
+              Reset App Data
             </TouchButton>
           </View>
         </View>

@@ -4,7 +4,7 @@ import {
   REMOVE_DECK,
   ADD_CARD,
   RESET_STORE
-} from '../actions/index';
+} from '../common/index';
 import { decks as INITIAL_STATE } from '../utils/_DATA';
 
 export default function decks(state = {}, action) {

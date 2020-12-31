@@ -10,7 +10,7 @@ import {
 import { connect } from 'react-redux';
 import Deck from './Deck';
 import { gray, green } from '../utils/colors';
-import { handleInitialData } from '../actions/index';
+import { handleInitialData } from '../common/index';
 
 export class DeckList extends Component {
   static propTypes = {
@@ -26,7 +26,7 @@ export class DeckList extends Component {
 
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.title}>Mobile Flashcards</Text>
+        <Text style={styles.title}>My Flashcard</Text>
         {Object.values(decks).map(deck => {
           return (
             <TouchableOpacity
@@ -39,7 +39,7 @@ export class DeckList extends Component {
             </TouchableOpacity>
           );
         })}
-        <View style={{ marginBottom: 30 }} />
+        <View style={{ marginBottom: 25 }} />
       </ScrollView>
     );
   }

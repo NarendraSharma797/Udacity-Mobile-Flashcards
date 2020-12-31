@@ -4,7 +4,7 @@ import { Text, View, StyleSheet, TextInput } from 'react-native';
 import TouchButton from './TouchButton';
 import { gray, green, white, textGray } from '../utils/colors';
 import { connect } from 'react-redux';
-import { addDeck } from '../actions/index';
+import { addDeck } from '../common/index';
 import { saveDeckTitleAS } from '../utils/api';
 import { StackActions, NavigationActions } from 'react-navigation';
 
@@ -19,7 +19,7 @@ export class AddDeck extends Component {
   handleChange = text => {
     this.setState({ text });
   };
-  handleSubmit = () => {
+  handleAdd = () => {
     const { addDeck, navigation } = this.props;
     const { text } = this.state;
 
@@ -55,15 +55,15 @@ export class AddDeck extends Component {
             placeholder="Deck Name"
             autoFocus={true}
             returnKeyType="done"
-            onSubmitEditing={this.handleSubmit}
+            onSubmitEditing={this.handleAdd}
           />
         </View>
         <TouchButton
           btnStyle={{ backgroundColor: green, borderColor: white }}
-          onPress={this.handleSubmit}
+          onPress={this.handleAdd}
           disabled={this.state.text === ''}
         >
-          Create Deck
+        Add Deck
         </TouchButton>
       </View>
     );

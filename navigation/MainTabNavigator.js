@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import DeckList from '../components/DeckList';
 import AddDeck from '../components/AddDeck';
 import DeckDetail from '../components/DeckDetail';
-import AddCard from '../components/AddCard';
+import AddCard from '../components/AddNewCard';
 import Quiz from '../components/Quiz';
 import Settings from '../components/Settings';
 
@@ -19,11 +19,11 @@ const routeConfigs = {
   Decks: {
     screen: DeckList,
     navigationOptions: {
-      tabBarLabel: 'Decks',
+      tabBarLabel: 'DeckList',
       tabBarIcon: ({ tintColor }) => (
         <Icon.Ionicons
           name={isIOS ? 'ios-bookmarks' : 'md-bookmarks'}
-          size={30}
+          size={25}
           color={tintColor}
         />
       )
@@ -32,9 +32,9 @@ const routeConfigs = {
   AddDeck: {
     screen: AddDeck,
     navigationOptions: {
-      tabBarLabel: 'Add Deck',
+      tabBarLabel: 'Add New Deck',
       tabBarIcon: ({ tintColor }) => (
-        <Icon.FontAwesome name="plus-square" size={30} color={tintColor} />
+        <Icon.FontAwesome name="plus-square" size={25} color={tintColor} />
       )
     }
   },
@@ -43,7 +43,7 @@ const routeConfigs = {
     navigationOptions: {
       tabBarLabel: 'Settings',
       tabBarIcon: ({ tintColor }) => (
-        <Icon.FontAwesome name="sliders" size={30} color={tintColor} />
+        <Icon.FontAwesome name="sliders" size={25} color={tintColor} />
       )
     }
   }

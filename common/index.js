@@ -20,7 +20,7 @@ export function addDeck(title) {
   };
 }
 
-export function removeDeck(id) {
+export function removeDeckById(id) {
   return {
     type: REMOVE_DECK,
     id
