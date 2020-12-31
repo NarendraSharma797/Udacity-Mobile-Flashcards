@@ -9,7 +9,6 @@ import AddDeck from '../components/AddDeck';
 import DeckDetail from '../components/DeckDetail';
 import AddCard from '../components/AddNewCard';
 import Quiz from '../components/Quiz';
-import Settings from '../components/Settings';
 
 import { darkGray, white, green, lightGreen } from '../utils/colors';
 
@@ -37,15 +36,6 @@ const routeConfigs = {
         <Icon.FontAwesome name="plus-square" size={25} color={tintColor} />
       )
     }
-  },
-  Settings: {
-    screen: Settings,
-    navigationOptions: {
-      tabBarLabel: 'Settings',
-      tabBarIcon: ({ tintColor }) => (
-        <Icon.FontAwesome name="cogs" size={25} color={tintColor} />
-      )
-    }
   }
 };
 
@@ -53,9 +43,6 @@ routeConfigs.Decks.navigationOptions.tabBarIcon.propTypes = {
   tintColor: PropTypes.string.isRequired
 };
 routeConfigs.AddDeck.navigationOptions.tabBarIcon.propTypes = {
-  tintColor: PropTypes.string.isRequired
-};
-routeConfigs.Settings.navigationOptions.tabBarIcon.propTypes = {
   tintColor: PropTypes.string.isRequired
 };
 

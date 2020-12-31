@@ -13,10 +13,10 @@ export function clearLocalNotification() {
   );
 }
 
-function createNotification() {
+function createNewNotification() {
   return {
-    title: 'Mobile Flashcards Reminder',
-    body: "👋 Don't forget to study for today!",
+    title: 'Study Reminder',
+    body: 'You still have time to study today ;)',
     ios: {
       sound: true
     },
@@ -28,10 +28,10 @@ function createNotification() {
   };
 }
 
-function createChannel() {
+function createNewChannel() {
   return {
     name: 'Daily Reminder',
-    description: 'This is a daily reminder for you to study your flashcards.',
+    description: 'This is a daily reminder for you to study.',
     sound: true,
     priority: 'high'
   };
@@ -47,8 +47,8 @@ export function setLocalNotification() {
           // console.log('got in');
           // console.log('data', data);
           if (status === 'granted') {
-            // Notifications.presentLocalNotificationAsync(createNotification());
-            Notifications.createChannelAndroidAsync(CHANNEL_ID, createChannel())
+            // Notifications.presentLocalNotificationAsync(createNewNotification());
+            Notifications.createChannelAndroidAsync(CHANNEL_ID, createNewChannel())
               .then(val => console.log('channel return:', val))
               .then(() => {
                 Notifications.cancelAllScheduledNotificationsAsync();
@@ -62,7 +62,7 @@ export function setLocalNotification() {
                 tomorrow.setMinutes(0);
 
                 Notifications.scheduleLocalNotificationAsync(
-                  createNotification(),
+                  createNewNotification(),
                   {
                     time: tomorrow,
                     repeat: 'day'

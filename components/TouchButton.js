@@ -65,7 +65,10 @@ const styles = StyleSheet.create({
 });
 
 TouchButton.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.array.isRequired,
+    PropTypes.string.isRequired,
+  ]),
   onPress: PropTypes.func.isRequired,
   btnStyle: PropTypes.object,
   txtStyle: PropTypes.object,

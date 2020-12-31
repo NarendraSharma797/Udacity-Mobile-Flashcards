@@ -4,7 +4,6 @@
     "description": "This app is used to create new flashcards.",
     "slug": "mobile-flashcards",
     "privacy": "public",
-    "sdkVersion": "40.0.0",
     "platforms": [
       "ios",
       "android"

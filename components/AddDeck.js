@@ -64,7 +64,7 @@ export class AddDeck extends Component {
           onPress={this.handleAdd}
           disabled={this.state.text === ''}
         >
-        Add Deck
+        Create Deck
         </TouchButton>
       </View>
     );
